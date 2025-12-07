@@ -1,0 +1,59 @@
+# S7Z压缩工具打包指南
+
+## 问题分析
+当使用PyInstaller将Python程序打包成exe文件后，帮助文档(help.html)无法找到的问题，主要是因为以下原因：
+
+1. **文件路径问题**：在未打包时，程序通过`os.path.dirname(__file__)`查找help.html文件，但在打包后的exe中，这个路径会指向临时目录，导致无法找到文件。
+
+2. **文件未包含**：PyInstaller默认只会打包Python代码文件，不会自动包含其他类型的文件（如HTML文件）。
+
+## 解决方案
+
+### 1. 已修复的代码
+已修改`gui.py`文件中的`show_help`方法，使其能够在打包后正确找到help.html文件：
+
+```python
+def show_help(self):
+    # ...
+    import sys
+    if hasattr(sys, '_MEIPASS'):
+        # 打包后的情况
+        help_file_path = os.path.join(sys._MEIPASS, "help.html")
+    else:
+        # 未打包的情况
+        help_file_path = os.path.join(os.path.dirname(__file__), "help.html")
+    # ...
+```
+
+### 2. 打包命令
+使用PyInstaller打包时，需要明确指定包含help.html文件：
+
+```bash
+# 单文件打包
+pyinstaller --onefile --add-data "help.html;." main.py
+
+# 多文件打包
+pyinstaller --add-data "help.html;." main.py
+```
+
+**参数说明**：
+- `--onefile`：将所有文件打包成单个exe文件
+- `--add-data "help.html;."`：将help.html文件添加到打包后的程序中，分号前是源文件路径，分号后是目标路径（"."表示与exe文件同目录）
+
+### 3. 验证
+打包完成后，确保help.html文件与生成的exe文件位于同一目录下（单文件打包时，程序运行时会自动提取该文件）。
+
+## 注意事项
+
+1. **Windows路径分隔符**：在Windows命令行中，使用分号(;)分隔源文件和目标路径；在Linux/macOS中使用冒号(:)。
+
+2. **多个文件**：如果需要包含多个文件，可以多次使用`--add-data`参数。
+
+3. **文件夹**：如果需要包含整个文件夹，可以使用通配符：
+   ```bash
+   pyinstaller --add-data "docs/*;docs" main.py
+   ```
+
+4. **中文路径**：尽量避免在源文件路径和目标路径中使用中文，以免出现编码问题。
+
+按照以上步骤操作，打包后的程序应该能够正确显示帮助文档了。

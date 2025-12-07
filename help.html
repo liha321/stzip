@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STZ压缩解压工具 - 帮助文档</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 15px 0;
+        }
+        .warning {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>STZ压缩解压工具 - 帮助文档</h1>
+    
+    <h2>1. 功能介绍</h2>
+    <p>STZ压缩解压工具是一款支持多种压缩算法的文件压缩和解压工具，具有直观的图形界面和丰富的功能。</p>
+    
+    <h2>2. 快速开始</h2>
+    <h3>2.1 压缩文件</h3>
+    <ol>
+        <li>点击"添加文件"或"添加文件夹"按钮，选择要压缩的文件或文件夹</li>
+        <li>选择压缩级别（1-9，数字越大压缩率越高但速度越慢）</li>
+        <li>（可选）勾选"设置密码"并输入密码，为压缩包添加加密保护</li>
+        <li>点击"开始压缩"按钮，选择保存路径，开始压缩过程</li>
+    </ol>
+    
+    <h3>2.2 解压文件</h3>
+    <ol>
+        <li>在"解压"标签页中，点击"选择文件"按钮，选择要解压的压缩包</li>
+        <li>（可选）如果压缩包有密码，勾选"输入密码"并输入正确的密码</li>
+        <li>点击"开始解压"按钮，选择解压路径，开始解压过程</li>
+    </ol>
+    
+    <h2>3. 打包指南</h2>
+    <h3>3.1 本地部署</h3>
+    <ol>
+        <li>确保已安装Python 3.7或更高版本</li>
+        <li>安装所需依赖：<code>pip install -r requirements.txt</code></li>
+        <li>运行程序：<code>python main.py</code></li>
+    </ol>
+    
+    <h3>3.2 打包参数配置</h3>
+    <p>支持的打包参数：</p>
+    <ul>
+        <li><strong>压缩级别</strong>：1-9，控制压缩率和速度的平衡</li>
+        <li><strong>加密选项</strong>：是否为压缩包添加密码保护</li>
+        <li><strong>压缩算法</strong>：自动选择最佳算法（支持zlib、bz2、lzma等）</li>
+        <li><strong>输出格式</strong>：支持.stz、.zip、.tar.gz等多种格式</li>
+    </ul>
+    
+    <h3>3.3 高级配置</h3>
+    <p>在配置文件中可以设置以下高级参数：</p>
+    <pre>
+{
+    "default_compression_level": 6,
+    "language": "zh",
+    "theme": "system",
+    "output_format": "stz",
+    "auto_open_output": true
+}
+    </pre>
+    
+    <h2>4. 常见问题解决方案</h2>
+    <h3>4.1 压缩失败</h3>
+    <ul>
+        <li>检查文件路径是否包含特殊字符</li>
+        <li>确保有足够的磁盘空间</li>
+        <li>检查是否有权限访问要压缩的文件</li>
+    </ul>
+    
+    <h3>4.2 解压失败</h3>
+    <ul>
+        <li>检查压缩包是否损坏</li>
+        <li>确保输入了正确的密码（如果有密码保护）</li>
+        <li>检查是否有权限写入解压路径</li>
+    </ul>
+    
+    <h3>4.3 程序崩溃</h3>
+    <ul>
+        <li>确保已安装所有依赖</li>
+        <li>尝试以管理员身份运行程序</li>
+        <li>检查日志文件获取详细错误信息</li>
+    </ul>
+    
+    <h2>5. 技术支持</h2>
+    <p>如果您在使用过程中遇到问题，可以：</p>
+    <ul>
+        <li>查看日志文件获取详细错误信息</li>
+        <li>检查配置文件是否正确</li>
+        <li>尝试重新安装依赖</li>
+    </ul>
+    
+    <div class="note">
+        <strong>注意：</strong>为了保证最佳性能，建议定期清理临时文件和日志文件。
+    </div>
+</body>
+</html>

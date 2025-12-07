@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-utils.py - STZ压缩工具通用工具函数模块（已改为 PySide6 友好）
+utils.py - STZ压缩工具通用工具函数模块
 包含弹窗提示、数据校验、通用小功能等
 """
 import os
